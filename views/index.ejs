@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat</title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap-responsive.css" type="text/css">
+</head>
+<body>
+	
+	
+	
+	<div id="chat" class="container">
+		<div class="page-header">
+			<h1>Sample chat Application</h1>
+		</div>
+		<div class="row">
+			<div class="span4">
+				<div id="connecting" style="display: none">
+					Connecting to socket.io server as <strong data-bind="text: name"></strong>
+				</div>
+				<div id="nickname">
+					<form action="" class="wrap" id="set-nickname">
+						<div class="control-group">
+							<label class="control-label" for="nick">Please type in your name and press enter.</label>
+							<div class="controls">
+								<input type="text" id="nick">
+								<span class="help-inline" style="display: none">Nickname already in use</span>
+							</div>
+						</div>
+					</form>
+					<div id="nickname-view">
+						Online: 
+						<!-- ko foreach: members -->
+						<strong data-bind="text: $data"></strong> 
+						<!-- /ko -->
+					</div>
+				</div>
+			</div>
+			<div id="messageArea" class="span8" style="display: none">
+				<form action="" id="send-message">
+					<input type="text" id="message" class="input-xlarge" />
+				</form>
+				<div id="messages">
+					<div id="lines">
+						<!-- ko foreach: messages -->
+						<p>
+							<span class="pull-right" data-bind="text: date"></span>
+							<strong data-bind="text: name"></strong> <span data-bind="text: message"></span>
+						</p>
+						<hr>
+						<!-- /ko -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="/javascripts/bootstrap.js"></script>
+	<script src="http://cloud.github.com/downloads/SteveSanderson/knockout/knockout-2.1.0.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/javascripts/script.js"></script>
+</body>
+</html>
